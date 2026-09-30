@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ruta Emprendedora | Orientación para estudiantes</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#faf7f2;--card:#fff;--tx:#1f2937;--mut:#6b7280;--pri:#0f766e;--pri2:#ccfbf1;--bd:#e5e7eb}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--card:#1f2937;--tx:#f3f4f6;--mut:#9ca3af;--pri:#2dd4bf;--pri2:#134e4a;--bd:#374151}}
+:root[data-theme="dark"]{--bg:#111827;--card:#1f2937;--tx:#f3f4f6;--mut:#9ca3af;--pri:#2dd4bf;--pri2:#134e4a;--bd:#374151}
+html{scroll-padding-top:70px}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);display:flex;gap:4px;overflow-x:auto;padding:8px 12px;z-index:5}
+nav a{white-space:nowrap;padding:6px 12px;border-radius:999px;color:var(--tx);text-decoration:none;font-size:.9rem}
+nav a:hover{background:var(--pri2)}
+main{max-width:860px;margin:0 auto;padding:16px}
+section{margin:0 0 28px}
+h1{font-size:2rem;margin:.3em 0}h2{font-size:1.4rem;margin:0 0 .5em;color:var(--pri)}
+.hero{background:var(--pri);color:#fff;border-radius:16px;padding:28px 22px}
+.hero p{margin:.4em 0 1em;opacity:.95}
+.btn{display:inline-block;background:var(--pri);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-size:1rem;cursor:pointer;text-decoration:none}
+:root[data-theme="dark"] .btn,:root:not([data-theme="light"]) .btn{color:#042f2e}
+.hero .btn{background:#fff;color:#0f766e}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.stage{cursor:pointer;text-align:left;font:inherit;color:inherit;background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:14px}
+.stage b{display:block;font-size:1.05rem}.stage span{color:var(--mut);font-size:.88rem}
+.stage.on{border-color:var(--pri);background:var(--pri2)}
+ol.steps{padding-left:20px}ol.steps li{margin:8px 0}
+.mut{color:var(--mut);font-size:.92rem}
+.q{margin:14px 0;padding-bottom:10px;border-bottom:1px solid var(--bd)}
+.opts{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.opts label{flex:1;min-width:52px;text-align:center;border:1px solid var(--bd);border-radius:8px;padding:6px 4px;cursor:pointer;font-size:.85rem}
+.opts input{display:block;margin:0 auto 2px}
+.bar{height:12px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri)}
+.tip h3{margin:0 0 4px;font-size:1.05rem}
+.tag{display:inline-block;background:var(--pri2);border-radius:6px;padding:1px 8px;font-size:.78rem;margin-right:4px}
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
+</style>
+</head>
+<body>
+<nav>
+<a href="#inicio">Inicio</a><a href="#etapa">¿En qué etapa estoy?</a><a href="#ruta">Mi ruta</a><a href="#recursos">Recursos</a><a href="#test">Test</a><a href="#orientacion">Orientación</a><a href="#validacion">Tu opinión</a>
+</nav>
+<main>
+
+<section id="inicio">
+<div class="hero">
+<h1>De la idea a la acción 🚀</h1>
+<p>Una guía para estudiantes de la Universidad Simón Bolívar que quieren emprender pero no saben por dónde empezar. Es corta, gratuita y se hace en minutos.</p>
+<a class="btn" href="#etapa">Empezar</a>
+</div>
+<div class="card">
+<b>Cómo usarla en 3 pasos</b>
+<ol class="steps">
+<li>Elige la <b>etapa</b> en la que está tu idea.</li>
+<li>Sigue la <b>ruta</b> de pasos que te sugerimos y revisa los <b>recursos</b>.</li>
+<li>Haz el <b>test</b> para conocer tus fortalezas y lo que puedes mejorar.</li>
+</ol>
+</div>
+</section>
+
+<section id="etapa">
+<h2>¿En qué etapa estoy?</h2>
+<div class="grid" id="stages"></div>
+</section>
+
+<section id="ruta">
+<h2>Ruta de emprendimiento</h2>
+<div class="card" id="routeBox"><p class="mut">Elige una etapa arriba para ver tu ruta personalizada.</p></div>
+</section>
+
+<section id="recursos">
+<h2>Recursos</h2>
+<div class="grid" id="resBox"></div>
+<p class="mut">Los nombres de programas y entidades son una referencia inicial. Verifica requisitos y convocatorias vigentes en sus canales oficiales.</p>
+</section>
+
+<section id="test">
+<h2>Test de perfil emprendedor</h2>
+<p class="mut">Responde con sinceridad: 1 = nada de acuerdo, 5 = totalmente de acuerdo. No es una calificación, es un punto de partida.</p>
+<div class="card"><div id="quiz"></div>
+<button class="btn" id="calc">Ver mi perfil</button></div>
+<div class="card" id="result" hidden></div>
+</section>
+
+<section id="orientacion">
+<h2>Orientación</h2>
+<div id="tips"></div>
+</section>
+
+<section id="validacion">
+<h2>Ayúdanos a mejorar esta herramienta</h2>
+<div class="card">
+<p>Tu opinión nos ayuda a validarla. En el formulario te preguntamos:</p>
+<ul>
+<li>¿Es fácil de utilizar?</li>
+<li>¿La información es clara y comprensible?</li>
+<li>¿Te resulta útil la orientación ofrecida?</li>
+<li>¿La información responde a tus necesidades?</li>
+<li>¿La usarías para orientar tu proceso emprendedor?</li>
+<li>¿Qué cambiarías o agregarías?</li>
+</ul>
+<a class="btn" id="formLink" href="#" target="_blank" rel="noopener">Responder el formulario</a>
+</div>
+</section>
+</main>
+<footer>Proyecto de formación · Ingeniería Industrial e Ingeniería de Sistemas · Universidad Simón Bolívar, Barranquilla</footer>
+
+<script>
+// ===== CONFIGURACIÓN: pega aquí el enlace de tu Google Form de validación =====
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSda7M_Hx60LR_Sl4hsKVWE3SoSnQ7nSMDSMTk4x78WQ2s6wSg/viewform?usp=publish-editor";
+
+const STAGES = [
+ {id:"idea",t:"💡 Tengo una idea",d:"Aún no he empezado a construirla.",
+  steps:["Escribe tu idea en una frase: qué ofreces, a quién y qué problema resuelve.","Habla con 5 posibles clientes y pregúntales si tienen ese problema y cómo lo resuelven hoy.","Investiga quién más ofrece algo parecido y en qué puedes ser diferente.","Define la versión más pequeña de tu idea que podrías probar esta semana sin gastar casi nada.","Fíjate una meta concreta con fecha: por ejemplo, vender o probar tu primer producto en 30 días."]},
+ {id:"des",t:"🛠️ La estoy desarrollando",d:"Ya hay avances, pero no vendo aún.",
+  steps:["Construye un prototipo o muestra sencilla y pruébalo con personas reales.","Define tu propuesta de valor y tu cliente ideal con claridad.","Calcula costos básicos, precio y cuánto necesitas vender para no perder dinero.","Consigue retroalimentación y ajusta antes de invertir más.","Busca asesoría o mentoría y revisa opciones de financiación."]},
+ {id:"fun",t:"📈 Ya está funcionando",d:"Tengo clientes o ventas.",
+  steps:["Lleva un registro simple de ingresos, gastos y clientes.","Identifica qué producto o canal te deja más ganancia y refuérzalo.","Mejora la forma de atender y retener clientes.","Formaliza tu negocio cuando sea el momento (registro, NIT, cuentas).","Explora capital o alianzas para crecer de forma ordenada."]},
+ {id:"con",t:"🏆 Está consolidada",d:"Es estable y genera ingresos.",
+  steps:["Documenta procesos para que el negocio no dependa solo de ti.","Mide indicadores clave: ventas, margen, clientes recurrentes.","Piensa en nuevos productos, mercados o canales de venta.","Busca aliados, inversión o programas de aceleración.","Comparte tu experiencia: mentoría a otros estudiantes."]}
+];
+const RES = [
+ {t:"💰 Financiación",i:["Fondo Emprender (SENA)","iNNpulsa Colombia","Bancóldex y microcrédito","Capital semilla y concursos universitarios"]},
+ {t:"🎓 Capacitación",i:["Cátedra de emprendimiento de la universidad","Cursos gratuitos del SENA","Cámara de Comercio de Barranquilla","Plataformas de cursos en línea"]},
+ {t:"🧭 Orientación",i:["MacondoLab (Universidad Simón Bolívar)","Docentes y mentores del programa","Red de egresados emprendedores","Asesorías de la Cámara de Comercio"]},
+ {t:"🤝 Apoyo y comunidad",i:["Grupos de semilleros de investigación","Eventos y ferias de emprendimiento","Comunidades de emprendedores locales","Compañeros con intereses similares"]}
+];
+const DIMS = {
+ hab:{n:"Habilidades",tip:"Practica lo que te falta con un mini-proyecto: vender algo pequeño te enseña más que meses de teoría."},
+ mot:{n:"Motivación",tip:"Conecta tu idea con un motivo personal y ponte metas pequeñas semanales para mantener el impulso."},
+ con:{n:"Confianza",tip:"Empieza con pruebas de bajo riesgo. Cada pequeño resultado construye seguridad; el error hace parte del proceso."},
+ org:{n:"Organización",tip:"Usa un calendario y una lista de tareas de máximo 3 prioridades por semana, y revisa avances cada domingo."}
+};
+const QS = [
+ ["hab","Siento que tengo habilidades para vender, comunicar o liderar un proyecto."],
+ ["hab","Aprendo rápido lo que necesito para sacar adelante una idea."],
+ ["mot","Me motiva crear algo propio, aunque al inicio sea difícil."],
+ ["mot","Cuando empiezo un proyecto, suelo mantener el esfuerzo hasta verlo avanzar."],
+ ["con","No me paraliza el miedo a fracasar cuando pienso en emprender."],
+ ["con","Me siento capaz de empezar aunque no tenga todo el dinero o las condiciones ideales."],
+ ["org","Sé distribuir mi tiempo entre estudio y otras actividades."],
+ ["org","Suelo planear los pasos antes de ejecutar una idea."]
+];
+const TIPS = [
+ ["Motivación","No esperes sentirte listo. La motivación suele llegar después de empezar, no antes. Da un paso pequeño hoy."],
+ ["Confianza y miedo al fracaso","Prueba tu idea a pequeña escala. Un resultado fallido en una prueba barata es aprendizaje, no una pérdida grande."],
+ ["Falta de capital","Muchos negocios empiezan con poco: vende primero, valida la demanda y usa lo que ya tienes antes de buscar financiación."],
+ ["Tiempo y organización","Reserva 3 bloques fijos por semana para tu proyecto, aunque sean de una hora. La constancia supera a los maratones."],
+ ["Incertidumbre económica","No tienes que renunciar a nada: puedes emprender mientras estudias o trabajas y crecer cuando tengas resultados."],
+ ["Entorno y apoyo","Busca personas que te apoyen: mentores, compañeros o docentes. Contar tu idea en voz alta ya es un avance."]
+];
+
+// Etapas
+const sg=document.getElementById("stages"),rb=document.getElementById("routeBox");
+STAGES.forEach(s=>{const b=document.createElement("button");b.className="stage";b.innerHTML=`<b>${s.t}</b><span>${s.d}</span>`;
+ b.onclick=()=>{document.querySelectorAll(".stage").forEach(x=>x.classList.remove("on"));b.classList.add("on");
+  rb.innerHTML=`<b>Tu ruta: ${s.t}</b><ol class="steps">${s.steps.map(x=>`<li>${x}</li>`).join("")}</ol><a href="#recursos">Ver recursos →</a>`;
+  rb.scrollIntoView({behavior:"smooth",block:"start"});};
+ sg.appendChild(b);});
+// Recursos
+document.getElementById("resBox").innerHTML=RES.map(r=>`<div class="card"><b>${r.t}</b><ul>${r.i.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("");
+// Test
+document.getElementById("quiz").innerHTML=QS.map((q,i)=>`<div class="q"><div>${i+1}. ${q[1]}</div><div class="opts">${[1,2,3,4,5].map(v=>`<label><input type="radio" name="q${i}" value="${v}">${v}</label>`).join("")}</div></div>`).join("");
+document.getElementById("calc").onclick=()=>{
+ const sc={hab:0,mot:0,con:0,org:0};let miss=0;
+ QS.forEach((q,i)=>{const r=document.querySelector(`input[name=q${i}]:checked`);if(!r)miss++;else sc[q[0]]+=+r.value;});
+ const out=document.getElementById("result");out.hidden=false;
+ if(miss){out.innerHTML=`<p>Te faltan ${miss} pregunta(s) por responder.</p>`;return;}
+ const arr=Object.entries(sc).sort((a,b)=>b[1]-a[1]);
+ out.innerHTML=`<b>Tu perfil</b>`+Object.entries(sc).map(([k,v])=>`<p style="margin:10px 0 2px">${DIMS[k].n}: ${v}/10</p><div class="bar"><i style="width:${v*10}%"></i></div>`).join("")+
+ `<p><span class="tag">Fortaleza</span>${DIMS[arr[0][0]].n}</p><p><span class="tag">Por mejorar</span>${DIMS[arr[3][0]].n}</p><p>${DIMS[arr[3][0]].tip}</p>`;
+ out.scrollIntoView({behavior:"smooth",block:"nearest"});
+};
+// Orientación
+document.getElementById("tips").innerHTML=TIPS.map(t=>`<div class="card tip"><h3>${t[0]}</h3><p style="margin:0">${t[1]}</p></div>`).join("");
+// Formulario
+const fl=document.getElementById("formLink");
+if(FORM_URL)fl.href=FORM_URL;else fl.onclick=e=>{e.preventDefault();alert("Falta configurar el enlace del formulario (FORM_URL en el código).");};
+</script>
+</body>
+</html>
